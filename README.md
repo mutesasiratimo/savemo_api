@@ -52,6 +52,20 @@ docker compose up --build
 
 The seed migration creates an **admin** role with ACL `all` and assigns it to this user. Use roles (and the `all` permission) instead of the legacy `is_superuser` flag.
 
+### CI: GHCR image
+
+On every push to `main`, GitHub Actions builds the API image and pushes it to [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry):
+
+- **Image:** `ghcr.io/<owner>/<repo>:latest` and `ghcr.io/<owner>/<repo>:<sha>`
+- Workflow: `.github/workflows/build-push-ghcr.yml`
+- No secrets required; `GITHUB_TOKEN` is used to push. For private repos, the image is private by default.
+
+To run the published image (after setting `DATABASE_URL`):
+
+```bash
+docker run --rm -e DATABASE_URL=postgresql+psycopg2://user:pass@host:5432/db ghcr.io/<owner>/<repo>:latest
+```
+
 ### Auth
 
 - **Login** (`POST /api/v1/auth/login`) returns both `access_token` and `refresh_token`.
