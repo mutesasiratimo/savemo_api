@@ -11,9 +11,9 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Save Mo Finance API"
     API_V1_PREFIX: str = "/api/v1"
 
-    DATABASE_URL: str = "postgresql+psycopg2://savemo_user:savemo_password@db:5432/savemo"
+    DATABASE_URL: str = "postgresql+psycopg2://savemo_user:4e3w2q11423@db:5432/savemo"
 
-    JWT_SECRET_KEY: str = "CHANGE_ME_SECRET"
+    JWT_SECRET_KEY: str = "4e3w2q11423!$@#"
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24
     REFRESH_TOKEN_EXPIRE_DAYS: int = 7
